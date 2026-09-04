@@ -11,31 +11,65 @@ const adminRoutes = require("./routes/adminRoutes");
 
 const app = express();
 
-const PORT = 5000;
+// ========================================
+// PORT
+// ========================================
 
+const PORT = process.env.PORT || 5000;
+
+// ========================================
+// CORS
+// ========================================
+
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:3000",
+  "https://educational-mu.vercel.app",
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      // Allow requests without an origin
+      // (Postman, server-to-server requests, etc.)
+      if (!origin) {
+        return callback(null, true);
+      }
+
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      // Allow Vercel preview deployments
+      if (origin.endsWith(".vercel.app")) {
+        return callback(null, true);
+      }
+
+      return callback(
+        new Error("Not allowed by CORS")
+      );
+    },
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 
 // ========================================
 // MIDDLEWARE
 // ========================================
 
-app.use(cors());
-
 app.use(express.json());
-
 
 // ========================================
 // SERVER TEST
 // ========================================
 
 app.get("/", (req, res) => {
-
   res.json({
     success: true,
-    message: "Educational backend is running!"
+    message: "Educational backend is running!",
   });
-
 });
-
 
 // ========================================
 // ROUTES
@@ -47,13 +81,11 @@ app.use(
   assessmentRoutes
 );
 
-
 // Common Login
 app.use(
   "/api/auth",
   authRoutes
 );
-
 
 // Admin Dashboard
 app.use(
@@ -61,28 +93,23 @@ app.use(
   adminRoutes
 );
 
-
 // ========================================
 // START SERVER
 // ========================================
 
 connectDB()
   .then(() => {
-
-    app.listen(PORT, () => {
-
+    app.listen(PORT, "0.0.0.0", () => {
       console.log(
-        `Server running on http://localhost:${PORT}`
+        `Server running on port ${PORT}`
       );
-
     });
-
   })
   .catch((error) => {
-
     console.error(
       "Server startup failed:",
       error.message
     );
 
+    process.exit(1);
   });

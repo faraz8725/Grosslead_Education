@@ -10,6 +10,8 @@ function Login() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
 
+    const API_URL = import.meta.env.VITE_API_URL;
+
     const handleLogin = async (e) => {
         e.preventDefault();
 
@@ -18,7 +20,7 @@ function Login() {
 
         try {
             const response = await fetch(
-                "http://localhost:5000/api/auth/login",
+                `${API_URL}/api/auth/login`,
                 {
                     method: "POST",
                     headers: {
@@ -34,8 +36,9 @@ function Login() {
             const data = await response.json();
 
             if (!response.ok || !data.success) {
-                setError(data.message || "Invalid email or password");
-                setLoading(false);
+                setError(
+                    data.message || "Invalid email or password"
+                );
                 return;
             }
 
@@ -47,19 +50,13 @@ function Login() {
 
             localStorage.setItem("role", data.role);
 
-            // ==============================
-            // ADMIN LOGIN
-            // ==============================
-
+            // Admin login
             if (data.role === "admin") {
                 navigate("/admin/dashboard");
                 return;
             }
 
-            // ==============================
-            // NORMAL USER LOGIN
-            // ==============================
-
+            // Normal user login
             if (data.role === "user") {
                 navigate("/");
                 return;
@@ -140,7 +137,11 @@ function Login() {
                 <div className="login-footer">
                     <p>
                         Don't have an account?
-                        <span onClick={() => navigate("/register")}>
+                        <span
+                            onClick={() =>
+                                navigate("/register")
+                            }
+                        >
                             {" "}Create an account
                         </span>
                     </p>

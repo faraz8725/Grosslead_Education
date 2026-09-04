@@ -1,0 +1,482 @@
+/* =====================================================
+   HOW IT WORKS
+   Responsive and overflow-safe
+===================================================== */
+
+.edu-how-section {
+  width: 100%;
+  max-width: 1140px;
+
+  margin: 0 auto;
+
+  padding: 25px 24px 55px;
+
+  background: #ffffff;
+
+  /*
+     IMPORTANT:
+     Padding is included inside the width.
+     This prevents horizontal overflow.
+  */
+  box-sizing: border-box;
+
+  min-width: 0;
+
+  overflow: hidden;
+}
+
+
+/* =====================================================
+   HEADING
+===================================================== */
+
+.edu-how-heading {
+  width: 100%;
+
+  text-align: center;
+
+  margin-bottom: 28px;
+
+  box-sizing: border-box;
+}
+
+.edu-how-label {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: #2383e2;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: 0.2px;
+}
+
+.edu-how-heading h2 {
+  margin: 0;
+
+  color: #07143d;
+
+  font-size: 27px;
+  line-height: 1.2;
+
+  font-weight: 750;
+
+  letter-spacing: -0.5px;
+
+  overflow-wrap: break-word;
+}
+
+.edu-how-heading p {
+  margin: 7px 0 0;
+
+  color: #667085;
+
+  font-size: 13px;
+  line-height: 1.5;
+
+  overflow-wrap: break-word;
+}
+
+
+/* =====================================================
+   STEPS
+===================================================== */
+
+.edu-how-steps {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  min-width: 0;
+
+  box-sizing: border-box;
+}
+
+
+/* =====================================================
+   CARD
+===================================================== */
+
+.edu-how-card {
+  flex: 1 1 0;
+
+  min-width: 0;
+  min-height: 105px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  padding: 15px;
+
+  background: #ffffff;
+
+  border: 1px solid #e4e9f1;
+
+  border-radius: 11px;
+
+  box-shadow:
+    0 5px 18px rgba(31, 65, 110, 0.07);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+  box-sizing: border-box;
+}
+
+.edu-how-card:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 9px 25px rgba(31, 65, 110, 0.11);
+}
+
+
+/* =====================================================
+   ICON
+===================================================== */
+
+.edu-how-icon {
+  width: 54px;
+  height: 54px;
+
+  min-width: 54px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  flex-shrink: 0;
+}
+
+.edu-how-icon svg {
+  display: block;
+
+  width: 28px;
+  height: 28px;
+
+  max-width: 28px;
+  max-height: 28px;
+}
+
+
+/* =====================================================
+   ICON COLORS
+===================================================== */
+
+.edu-how-blue {
+  background: #eaf2ff;
+
+  color: #1769e0;
+}
+
+.edu-how-green {
+  background: #e8faef;
+
+  color: #20b486;
+}
+
+.edu-how-purple {
+  background: #f1eaff;
+
+  color: #7047df;
+}
+
+
+/* =====================================================
+   CARD CONTENT
+===================================================== */
+
+.edu-how-card-content {
+  min-width: 0;
+
+  flex: 1;
+
+  overflow: hidden;
+}
+
+.edu-how-number {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: #1769e0;
+
+  font-size: 14px;
+  line-height: 1;
+
+  font-weight: 700;
+}
+
+.edu-how-card-content h3 {
+  margin: 0;
+
+  color: #172033;
+
+  font-size: 14px;
+  line-height: 1.25;
+
+  font-weight: 700;
+
+  overflow-wrap: break-word;
+}
+
+.edu-how-card-content p {
+  margin: 6px 0 0;
+
+  color: #667085;
+
+  font-size: 11px;
+  line-height: 1.45;
+
+  overflow-wrap: break-word;
+}
+
+
+/* =====================================================
+   CONNECTING ARROW
+===================================================== */
+
+.edu-how-connector {
+  width: 27px;
+  min-width: 27px;
+
+  height: 20px;
+
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  flex-shrink: 0;
+}
+
+.edu-how-connector span {
+  position: absolute;
+
+  left: 0;
+  right: 5px;
+
+  top: 50%;
+
+  height: 1px;
+
+  background: #91bdf2;
+}
+
+.edu-how-connector b {
+  position: absolute;
+
+  right: 0;
+
+  top: 50%;
+
+  color: #6da8e9;
+
+  font-size: 22px;
+  line-height: 1;
+
+  font-weight: 400;
+
+  transform: translateY(-55%);
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 950px) {
+
+  .edu-how-section {
+    width: 100%;
+
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .edu-how-steps {
+    gap: 6px;
+  }
+
+  .edu-how-card {
+    gap: 10px;
+
+    padding: 12px;
+  }
+
+  .edu-how-icon {
+    width: 47px;
+    height: 47px;
+
+    min-width: 47px;
+  }
+
+  .edu-how-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .edu-how-card-content h3 {
+    font-size: 12px;
+  }
+
+  .edu-how-card-content p {
+    font-size: 10px;
+  }
+
+  .edu-how-connector {
+    width: 20px;
+
+    min-width: 20px;
+  }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+
+  .edu-how-section {
+    width: 100%;
+
+    padding: 25px 16px 45px;
+
+    box-sizing: border-box;
+  }
+
+  .edu-how-heading {
+    margin-bottom: 22px;
+  }
+
+  .edu-how-heading h2 {
+    font-size: 24px;
+  }
+
+  .edu-how-heading p {
+    font-size: 12px;
+  }
+
+  .edu-how-steps {
+    width: 100%;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 10px;
+  }
+
+  .edu-how-card {
+    width: 100%;
+
+    flex: none;
+
+    min-height: 98px;
+
+    padding: 14px;
+  }
+
+  .edu-how-icon {
+    width: 52px;
+    height: 52px;
+
+    min-width: 52px;
+  }
+
+  .edu-how-icon svg {
+    width: 27px;
+    height: 27px;
+  }
+
+  .edu-how-card-content h3 {
+    font-size: 14px;
+  }
+
+  .edu-how-card-content p {
+    font-size: 11px;
+  }
+
+
+  /* ==============================================
+     VERTICAL ARROW
+  ============================================== */
+
+  .edu-how-connector {
+    width: 20px;
+
+    min-width: 20px;
+
+    height: 20px;
+
+    align-self: center;
+
+    transform: rotate(90deg);
+  }
+}
+
+
+/* =====================================================
+   SMALL PHONE
+===================================================== */
+
+@media (max-width: 400px) {
+
+  .edu-how-section {
+    width: 100%;
+
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .edu-how-heading h2 {
+    font-size: 22px;
+  }
+
+  .edu-how-heading p {
+    font-size: 11px;
+  }
+
+  .edu-how-card {
+    min-height: 92px;
+
+    padding: 12px;
+
+    gap: 10px;
+  }
+
+  .edu-how-icon {
+    width: 46px;
+    height: 46px;
+
+    min-width: 46px;
+  }
+
+  .edu-how-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .edu-how-card-content h3 {
+    font-size: 13px;
+  }
+
+  .edu-how-card-content p {
+    font-size: 10px;
+  }
+}

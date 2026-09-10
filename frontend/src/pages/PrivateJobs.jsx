@@ -4,15 +4,14 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "../styles/privateJobs.css";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 function PrivateJobs() {
   const navigate = useNavigate();
 
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-
-  // YOUR RENDER BACKEND URL
-  const API_URL = "https://YOUR-RENDER-URL.onrender.com";
 
   const fetchPrivateJobs = async () => {
     try {

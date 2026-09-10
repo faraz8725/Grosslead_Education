@@ -4,6 +4,8 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "../styles/governmentJobs.css";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 function GovernmentJobs() {
   const navigate = useNavigate();
 
@@ -17,7 +19,7 @@ function GovernmentJobs() {
       setError("");
 
       const response = await fetch(
-        "http://localhost:5000/api/admin/jobs/government"
+        `${API_URL}/api/admin/jobs/government`
       );
 
       const data = await response.json();

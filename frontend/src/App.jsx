@@ -22,7 +22,7 @@ import Register from "./pages/Register";
 // Admin
 import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard";
-import AdminCareers from "./pages/AdminCareers";
+import Admincareers from "./pages/Admincareers";
 
 function App() {
   return (
@@ -60,7 +60,7 @@ function App() {
         {/* Admin */}
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
-        <Route path="/admin/careers"element={<AdminCareers />}
+        <Route path="/admin/careers"element={<Admincareers />}
         />
 
       </Routes>

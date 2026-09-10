@@ -11,13 +11,16 @@ function PrivateJobs() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
+  // YOUR RENDER BACKEND URL
+  const API_URL = "https://YOUR-RENDER-URL.onrender.com";
+
   const fetchPrivateJobs = async () => {
     try {
       setLoading(true);
       setError("");
 
       const response = await fetch(
-        "http://localhost:5000/api/admin/jobs/private"
+        `${API_URL}/api/admin/jobs/private`
       );
 
       const data = await response.json();

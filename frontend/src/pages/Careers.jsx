@@ -4,6 +4,8 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "../styles/careers.css";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 function Careers() {
   const navigate = useNavigate();
 
@@ -17,7 +19,7 @@ function Careers() {
       setError("");
 
       const response = await fetch(
-        "http://localhost:5000/api/admin/careers"
+        `${API_URL}/api/admin/careers`
       );
 
       const data = await response.json();

@@ -1,6 +1,8 @@
 import React from "react";
 import "../styles/footer.css";
 
+import logo from "../assets/web-logo.png";
+
 function Footer() {
   return (
     <footer className="edu-footer">
@@ -13,19 +15,11 @@ function Footer() {
 
           <a href="/" className="edu-footer-logo">
 
-            <div className="edu-footer-logo-icon">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-                <path d="M6 12v5c3 3 9 3 12 0v-5" />
-              </svg>
-            </div>
+            <img
+              src={logo}
+              alt="Educational"
+              className="edu-footer-logo-image"
+            />
 
             <span>Educational</span>
 
@@ -36,29 +30,6 @@ function Footer() {
             <br />
             a better future with confidence.
           </p>
-
-
-          {/* Social Icons */}
-
-          <div className="edu-footer-social">
-
-            <a href="#" aria-label="Facebook">
-              f
-            </a>
-
-            <a href="#" aria-label="Instagram">
-              ◎
-            </a>
-
-            <a href="#" aria-label="LinkedIn">
-              in
-            </a>
-
-            <a href="#" aria-label="Twitter">
-              𝕏
-            </a>
-
-          </div>
 
         </div>
 
@@ -73,18 +44,7 @@ function Footer() {
           <a href="/careers">Careers</a>
           <a href="/jobs">Jobs</a>
           <a href="/about">About</a>
-
-        </div>
-
-
-        {/* ================= SUPPORT ================= */}
-
-        <div className="edu-footer-column">
-
-          <h4>Support</h4>
-
-          <a href="/contact">Contact</a>
-          <a href="/privacy">Privacy Policy</a>
+          <a href="/educationloan">Eduaction Loan</a>
 
         </div>
 
@@ -104,26 +64,6 @@ function Footer() {
           </a>
 
           <div className="contact-divider"></div>
-
-          <div className="edu-footer-contact-social">
-
-            <a href="#" aria-label="Facebook">
-              f
-            </a>
-
-            <a href="#" aria-label="Instagram">
-              ◎
-            </a>
-
-            <a href="#" aria-label="LinkedIn">
-              in
-            </a>
-
-            <a href="#" aria-label="Twitter">
-              𝕏
-            </a>
-
-          </div>
 
         </div>
 

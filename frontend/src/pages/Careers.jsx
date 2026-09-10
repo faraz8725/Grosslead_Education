@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -6,97 +7,39 @@ import "../styles/careers.css";
 function Careers() {
   const navigate = useNavigate();
 
-  const careers = [
-    {
-      icon: "💻",
-      title: "Software Developer",
-      slug: "software-developer",
-      description:
-        "Build websites, mobile apps and software using programming.",
-      skills: ["JavaScript", "React", "HTML", "CSS"],
-    },
+  const [careers, setCareers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
-    {
-      icon: "📊",
-      title: "Data Analyst",
-      slug: "data-analyst",
-      description:
-        "Analyze data and turn information into useful business insights.",
-      skills: ["Excel", "SQL", "Python", "Analytics"],
-    },
+  const fetchCareers = async () => {
+    try {
+      setLoading(true);
+      setError("");
 
-    {
-      icon: "🎨",
-      title: "UI/UX Designer",
-      slug: "ui-ux-designer",
-      description:
-        "Design simple, attractive and user-friendly digital experiences.",
-      skills: ["Figma", "Design", "Creativity", "Research"],
-    },
+      const response = await fetch(
+        "http://localhost:5000/api/admin/careers"
+      );
 
-    {
-      icon: "🩺",
-      title: "Healthcare Professional",
-      slug: "healthcare-professional",
-      description:
-        "Help people maintain their health and provide medical care.",
-      skills: ["Biology", "Communication", "Research"],
-    },
+      const data = await response.json();
 
-    {
-      icon: "💰",
-      title: "Financial Analyst",
-      slug: "financial-analyst",
-      description:
-        "Study financial information and help businesses make decisions.",
-      skills: ["Finance", "Excel", "Analysis", "Math"],
-    },
+      if (!response.ok || !data.success) {
+        throw new Error(
+          data.message || "Failed to load careers"
+        );
+      }
 
-    {
-      icon: "📈",
-      title: "Business & Management",
-      slug: "business-management",
-      description:
-        "Plan, manage and grow businesses through strategy and leadership.",
-      skills: ["Business", "Leadership", "Marketing", "Strategy"],
-    },
+      setCareers(data.careers || []);
+    } catch (err) {
+      console.error("Careers error:", err);
+      setError("Career data could not be loaded.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    {
-      icon: "⚖️",
-      title: "Government Services",
-      slug: "government-services",
-      description:
-        "Explore careers in government departments and public-sector services.",
-      skills: ["GK", "Reasoning", "Aptitude", "Communication"],
-    },
-
-    {
-      icon: "👨‍🏫",
-      title: "Teacher / Educator",
-      slug: "teacher-educator",
-      description:
-        "Guide students, explain concepts and help them grow.",
-      skills: ["Teaching", "Communication", "Patience"],
-    },
-
-    {
-      icon: "🔬",
-      title: "Researcher",
-      slug: "researcher",
-      description:
-        "Investigate questions, analyze information and create new knowledge.",
-      skills: ["Research", "Analysis", "Writing", "Critical Thinking"],
-    },
-
-    {
-      icon: "🧭",
-      title: "Career Exploration",
-      slug: "career-exploration",
-      description:
-        "Explore different career paths before choosing a specific direction.",
-      skills: ["Research", "Self Awareness", "Decision Making"],
-    },
-  ];
+  useEffect(() => {
+    fetchCareers();
+  }, []);
 
   return (
     <div className="careers-page">
@@ -116,12 +59,14 @@ function Careers() {
           </h1>
 
           <p>
-            Discover different career paths, understand the skills
-            required and find a direction that matches your interests.
+            Discover different career paths, understand the
+            skills required and find a direction that matches
+            your interests.
           </p>
 
         </div>
       </section>
+
 
       {/* CAREERS */}
       <section className="careers-section">
@@ -137,68 +82,192 @@ function Careers() {
           </div>
 
           <p>
-            Explore different career options and learn what
-            each path can offer.
+            Explore different career options and learn about
+            education, skills, courses and career roadmaps.
           </p>
 
         </div>
 
-        <div className="career-grid">
 
-          {careers.map((career) => (
+        {/* LOADING */}
+        {loading && (
+          <div className="empty-state">
+            <h3>Loading careers...</h3>
+          </div>
+        )}
 
-            <div
-              className="career-card"
-              key={career.slug}
-            >
 
-              <div className="career-card-top">
+        {/* ERROR */}
+        {!loading && error && (
+          <div className="empty-state">
 
-                <div className="career-icon">
-                  {career.icon}
-                </div>
+            <h3>{error}</h3>
 
-                <span className="career-arrow">
-                  ↗
-                </span>
+            <button onClick={fetchCareers}>
+              Try Again
+            </button>
 
-              </div>
+          </div>
+        )}
 
-              <h3>
-                {career.title}
-              </h3>
 
-              <p className="career-description">
-                {career.description}
+        {/* NO CAREERS */}
+        {!loading &&
+          !error &&
+          careers.length === 0 && (
+
+            <div className="empty-state">
+
+              <h3>No careers available</h3>
+
+              <p>
+                Career information will appear here.
               </p>
 
-              <div className="career-skills">
+            </div>
+          )}
 
-                {career.skills.map((skill) => (
-                  <span key={skill}>
-                    {skill}
-                  </span>
-                ))}
 
-              </div>
+        {/* CAREER GRID */}
+        {!loading &&
+          !error &&
+          careers.length > 0 && (
 
-              <button
-                className="career-explore-btn"
-                onClick={() =>
-                  navigate(`/career/${career.slug}`)
-                }
-              >
-                Explore Career
-                <span>→</span>
-              </button>
+            <div className="career-grid">
+
+              {careers.map((career) => (
+
+                <div
+                  className="career-card"
+                  key={career._id || career.slug}
+                >
+
+                  {/* TOP */}
+                  <div className="career-card-top">
+
+                    <div className="career-icon">
+                      {career.icon || "🎯"}
+                    </div>
+
+                    <span className="career-category">
+                      {career.category}
+                    </span>
+
+                  </div>
+
+
+                  {/* TITLE */}
+                  <h3>
+                    {career.title}
+                  </h3>
+
+
+                  {/* DESCRIPTION */}
+                  {career.description && (
+                    <p className="career-description">
+                      {career.description}
+                    </p>
+                  )}
+
+
+                  {/* EDUCATION */}
+                  {career.education && (
+                    <div className="career-detail-box">
+
+                      <h4>
+                        🎓 Education Required
+                      </h4>
+
+                      <p>
+                        {career.education}
+                      </p>
+
+                    </div>
+                  )}
+
+
+                  {/* SKILLS */}
+                  {career.skills &&
+                    career.skills.length > 0 && (
+
+                      <div className="career-detail-box">
+
+                        <h4>
+                          🛠️ Required Skills
+                        </h4>
+
+                        <div className="career-skills">
+
+                          {career.skills.map(
+                            (skill, index) => (
+                              <span key={index}>
+                                {skill}
+                              </span>
+                            )
+                          )}
+
+                        </div>
+
+                      </div>
+                    )}
+
+
+                  {/* COURSES */}
+                  {career.courses &&
+                    career.courses.length > 0 && (
+
+                      <div className="career-detail-box">
+
+                        <h4>
+                          📚 Recommended Courses
+                        </h4>
+
+                        <ul>
+                          {career.courses.map(
+                            (course, index) => (
+                              <li key={index}>
+                                {course}
+                              </li>
+                            )
+                          )}
+                        </ul>
+
+                      </div>
+                    )}
+
+
+                  {/* ROADMAP */}
+                  {career.roadmap &&
+                    career.roadmap.length > 0 && (
+
+                      <div className="career-detail-box">
+
+                        <h4>
+                          🗺️ Career Roadmap
+                        </h4>
+
+                        <ol>
+                          {career.roadmap.map(
+                            (step, index) => (
+                              <li key={index}>
+                                {step}
+                              </li>
+                            )
+                          )}
+                        </ol>
+
+                      </div>
+                    )}
+
+                </div>
+
+              ))}
 
             </div>
-
-          ))}
-
-        </div>
+          )}
 
       </section>
+
 
       {/* CTA */}
       <section className="careers-cta">
@@ -227,6 +296,7 @@ function Careers() {
         </button>
 
       </section>
+
 
       <Footer />
 

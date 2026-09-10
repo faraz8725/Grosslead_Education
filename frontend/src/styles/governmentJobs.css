@@ -1,0 +1,697 @@
+/* ========================================
+   GOVERNMENT JOBS PAGE
+======================================== */
+
+.government-jobs-page {
+  width: 100%;
+  min-height: 100vh;
+
+  background: #f8fafc;
+  color: #172033;
+
+  overflow-x: hidden;
+}
+
+
+/* ========================================
+   HERO
+======================================== */
+
+.government-hero {
+  padding: 80px 7% 65px;
+
+  background:
+    radial-gradient(
+      circle at 85% 20%,
+      rgba(35, 131, 226, 0.10),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #f3f8ff
+    );
+
+  border-bottom: 1px solid #e3edf8;
+}
+
+.government-hero-content {
+  max-width: 850px;
+
+  margin: auto;
+
+  text-align: center;
+}
+
+.government-badge {
+  display: inline-block;
+
+  padding: 9px 16px;
+
+  border-radius: 30px;
+
+  background: #edf6ff;
+  color: #2383e2;
+
+  font-size: 13px;
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
+
+  margin-bottom: 20px;
+}
+
+.government-hero h1 {
+  margin: 0;
+
+  color: #172033;
+
+  font-size: clamp(40px, 5vw, 60px);
+
+  line-height: 1.1;
+
+  font-weight: 800;
+
+  letter-spacing: -2px;
+}
+
+.government-hero h1 span {
+  color: #2383e2;
+}
+
+.government-hero p {
+  max-width: 680px;
+
+  margin: 22px auto 0;
+
+  color: #64748b;
+
+  font-size: 17px;
+
+  line-height: 1.8;
+}
+
+
+/* ========================================
+   SECTION
+======================================== */
+
+.government-section {
+  width: min(1200px, 90%);
+
+  margin: auto;
+
+  padding: 70px 0;
+}
+
+.government-heading {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: end;
+
+  gap: 30px;
+
+  margin-bottom: 35px;
+}
+
+.government-heading > div > span {
+  color: #2383e2;
+
+  font-size: 13px;
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
+}
+
+.government-heading h2 {
+  margin: 9px 0 0;
+
+  color: #172033;
+
+  font-size: 36px;
+
+  letter-spacing: -1px;
+}
+
+.government-heading p {
+  max-width: 410px;
+
+  margin: 0;
+
+  color: #718096;
+
+  line-height: 1.7;
+
+  font-size: 14px;
+}
+
+
+/* ========================================
+   GRID
+======================================== */
+
+.government-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 22px;
+}
+
+
+/* ========================================
+   CARD
+======================================== */
+
+.government-job-card {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  background: #ffffff;
+
+  border: 1px solid #e1e9f2;
+
+  border-radius: 18px;
+
+  padding: 26px;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.government-job-card:hover {
+  transform: translateY(-5px);
+
+  border-color: #bdd9f4;
+
+  box-shadow:
+    0 18px 45px rgba(35, 100, 160, 0.10);
+}
+
+
+/* ========================================
+   CARD TOP
+======================================== */
+
+.government-card-top {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 12px;
+}
+
+.government-icon {
+  width: 58px;
+  height: 58px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 14px;
+
+  background: #edf6ff;
+
+  border: 1px solid #dcecff;
+
+  font-size: 28px;
+}
+
+.government-type {
+  padding: 7px 11px;
+
+  border-radius: 20px;
+
+  background: #f0f7ff;
+
+  color: #2383e2;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  text-align: center;
+}
+
+
+/* ========================================
+   TITLE
+======================================== */
+
+.government-job-card h3 {
+  margin: 21px 0 18px;
+
+  color: #26364d;
+
+  font-size: 22px;
+
+  line-height: 1.35;
+}
+
+
+/* ========================================
+   INFO
+======================================== */
+
+.government-info {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 12px;
+
+  padding-bottom: 18px;
+
+  border-bottom: 1px solid #edf1f5;
+}
+
+.government-info div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.government-info strong {
+  color: #344256;
+
+  font-size: 13px;
+}
+
+.government-info span {
+  color: #64748b;
+
+  font-size: 14px;
+
+  line-height: 1.45;
+}
+
+
+/* ========================================
+   SKILLS
+======================================== */
+
+.government-skills {
+  margin-top: 18px;
+}
+
+.government-skills-title {
+  margin-bottom: 11px;
+
+  color: #344256;
+
+  font-size: 14px;
+
+  font-weight: 700;
+}
+
+.government-tags {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 8px;
+}
+
+.government-tags span {
+  display: inline-flex;
+
+  padding: 7px 10px;
+
+  border: 1px solid #dceaf8;
+
+  border-radius: 7px;
+
+  background: #f4f9ff;
+
+  color: #4b6f91;
+
+  font-size: 11.5px;
+
+  font-weight: 600;
+}
+
+
+/* ========================================
+   APPLY BUTTON
+======================================== */
+
+.government-apply {
+  margin-top: auto;
+
+  padding-top: 23px;
+}
+
+.government-apply a {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  padding: 13px 16px;
+
+  border-radius: 9px;
+
+  background: #2383e2;
+
+  color: #ffffff;
+
+  text-decoration: none;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.government-apply a:hover {
+  background: #176fc4;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 20px rgba(35, 131, 226, 0.22);
+}
+
+.government-apply a span {
+  font-size: 17px;
+
+  line-height: 1;
+}
+
+
+/* ========================================
+   NOTE
+======================================== */
+
+.government-note {
+  width: min(1050px, 88%);
+
+  box-sizing: border-box;
+
+  margin: 10px auto 55px;
+
+  padding: 25px 28px;
+
+  display: flex;
+
+  gap: 18px;
+
+  align-items: flex-start;
+
+  border: 1px solid #dce8f4;
+
+  border-radius: 16px;
+
+  background: #f4f9ff;
+}
+
+.government-note-icon {
+  width: 45px;
+  height: 45px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background: #e4f1ff;
+
+  font-size: 21px;
+}
+
+.government-note h3 {
+  margin: 2px 0 7px;
+
+  color: #26364d;
+
+  font-size: 17px;
+}
+
+.government-note p {
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 14px;
+
+  line-height: 1.7;
+}
+
+
+/* ========================================
+   CTA
+======================================== */
+
+.government-cta {
+  width: min(1100px, 88%);
+
+  box-sizing: border-box;
+
+  margin: 0 auto 70px;
+
+  padding: 45px 50px;
+
+  border-radius: 22px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2383e2,
+      #176fc4
+    );
+
+  color: white;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 30px;
+
+  box-shadow:
+    0 20px 45px rgba(35, 131, 226, 0.18);
+}
+
+.government-cta > div {
+  min-width: 0;
+}
+
+.government-cta span {
+  font-size: 12px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.4px;
+
+  opacity: 0.85;
+}
+
+.government-cta h2 {
+  margin: 8px 0;
+
+  font-size: 31px;
+}
+
+.government-cta p {
+  max-width: 550px;
+
+  margin: 0;
+
+  font-size: 15px;
+
+  line-height: 1.6;
+
+  opacity: 0.9;
+}
+
+.government-cta button {
+  flex-shrink: 0;
+
+  padding: 14px 22px;
+
+  border: none;
+
+  border-radius: 9px;
+
+  background: white;
+
+  color: #176fc4;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.government-cta button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 950px) {
+
+  .government-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .government-heading {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 650px) {
+
+  .government-hero {
+    padding: 55px 6% 50px;
+  }
+
+  .government-hero h1 {
+    font-size: 38px;
+
+    letter-spacing: -1px;
+  }
+
+  .government-hero p {
+    font-size: 15px;
+  }
+
+  .government-section {
+    width: 88%;
+
+    padding: 55px 0;
+  }
+
+  .government-heading h2 {
+    font-size: 29px;
+  }
+
+  .government-grid {
+    grid-template-columns: 1fr;
+
+    gap: 17px;
+  }
+
+  .government-job-card {
+    padding: 23px;
+  }
+
+  .government-job-card h3 {
+    font-size: 22px;
+  }
+
+  .government-info strong {
+    font-size: 13px;
+  }
+
+  .government-info span {
+    font-size: 14px;
+  }
+
+  .government-tags span {
+    font-size: 11.5px;
+  }
+
+  .government-note {
+    width: 88%;
+
+    margin-bottom: 45px;
+
+    padding: 22px;
+  }
+
+  .government-cta {
+    width: 88%;
+
+    margin-bottom: 45px;
+
+    padding: 30px 24px;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .government-cta h2 {
+    font-size: 25px;
+  }
+
+  .government-cta button {
+    width: 100%;
+  }
+}
+
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 400px) {
+
+  .government-hero h1 {
+    font-size: 33px;
+  }
+
+  .government-job-card h3 {
+    font-size: 20px;
+  }
+
+  .government-icon {
+    width: 50px;
+    height: 50px;
+
+    font-size: 24px;
+  }
+
+  .government-type {
+    font-size: 8px;
+
+    padding: 6px 8px;
+  }
+
+  .government-apply a {
+    font-size: 13px;
+  }
+}

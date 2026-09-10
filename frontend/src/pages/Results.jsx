@@ -31,12 +31,11 @@ function Results() {
   return (
     <div className="results-page">
 
-      {/* NAVBAR */}
       <Navbar />
 
-      {/* HERO */}
       <main className="results-container">
 
+        {/* HERO */}
         <section className="results-intro">
 
           <div className="results-label">
@@ -72,38 +71,49 @@ function Results() {
 
             <div className="profile-item">
               <div className="profile-icon">🎓</div>
+
               <div>
                 <small>QUALIFICATION</small>
+
                 <strong>
                   {userData.qualification || "Not provided"}
                 </strong>
               </div>
             </div>
 
+
             <div className="profile-item">
               <div className="profile-icon">📚</div>
+
               <div>
                 <small>STREAM</small>
+
                 <strong>
                   {userData.stream || "Not provided"}
                 </strong>
               </div>
             </div>
 
+
             <div className="profile-item">
               <div className="profile-icon">🎯</div>
+
               <div>
                 <small>GOAL</small>
+
                 <strong>
                   {userData.goal || "Not provided"}
                 </strong>
               </div>
             </div>
 
+
             <div className="profile-item">
               <div className="profile-icon">💰</div>
+
               <div>
                 <small>BUDGET</small>
+
                 <strong>
                   {userData.budget || "Not provided"}
                 </strong>
@@ -150,13 +160,6 @@ function Results() {
               const careerName =
                 career.career || "Career Recommendation";
 
-              const careerSlug =
-                career.slug ||
-                careerName
-                  .toLowerCase()
-                  .replace(/[^a-z0-9]+/g, "-")
-                  .replace(/(^-|-$)/g, "");
-
               const match =
                 career.match !== undefined
                   ? career.match
@@ -182,7 +185,7 @@ function Results() {
                   key={`${careerName}-${index}`}
                 >
 
-                  {/* TOP RANK */}
+                  {/* RANK */}
                   <div className="career-rank">
                     {index === 0 ? "🏆" : `0${index + 1}`}
                   </div>
@@ -190,6 +193,7 @@ function Results() {
 
                   <div className="career-card-main">
 
+                    {/* CAREER TITLE + MATCH */}
                     <div className="career-card-top">
 
                       <div>
@@ -199,6 +203,7 @@ function Results() {
 
                         <h2>{careerName}</h2>
                       </div>
+
 
                       <div className="match-box">
                         <strong>{match}%</strong>
@@ -212,16 +217,17 @@ function Results() {
                     <div className="match-progress">
 
                       <div className="match-progress-track">
+
                         <div
                           className="match-progress-fill"
                           style={{
                             width: `${Math.min(
-                              Math.max(Number(match) || 0,
-                              0),
+                              Math.max(Number(match) || 0, 0),
                               100
                             )}%`
                           }}
                         ></div>
+
                       </div>
 
                       <span>
@@ -239,8 +245,13 @@ function Results() {
                       </div>
 
                       <div>
-                        <h3>Why this career suits you</h3>
-                        <p>{reason}</p>
+                        <h3>
+                          Why this career suits you
+                        </h3>
+
+                        <p>
+                          {reason}
+                        </p>
                       </div>
 
                     </div>
@@ -248,9 +259,11 @@ function Results() {
 
                     {/* SKILLS + COURSES */}
                     {(skills.length > 0 || courses.length > 0) && (
+
                       <div className="career-details">
 
                         {skills.length > 0 && (
+
                           <div className="detail-column">
 
                             <h3>
@@ -261,18 +274,22 @@ function Results() {
                             <div className="detail-tags">
 
                               {skills.map((skill, skillIndex) => (
+
                                 <span key={skillIndex}>
                                   {skill}
                                 </span>
+
                               ))}
 
                             </div>
 
                           </div>
+
                         )}
 
 
                         {courses.length > 0 && (
+
                           <div className="detail-column">
 
                             <h3>
@@ -283,36 +300,22 @@ function Results() {
                             <div className="course-list">
 
                               {courses.map((course, courseIndex) => (
+
                                 <span key={courseIndex}>
                                   {course}
                                 </span>
+
                               ))}
 
                             </div>
 
                           </div>
+
                         )}
 
                       </div>
+
                     )}
-
-
-                    {/* BUTTON */}
-                    <div className="career-card-footer">
-
-                      <span className="career-tip">
-                        Explore this career path
-                      </span>
-
-                      <Link
-                        to={`/career/${careerSlug}`}
-                        className="career-button"
-                      >
-                        View Career
-                        <span>→</span>
-                      </Link>
-
-                    </div>
 
                   </div>
 
@@ -371,12 +374,16 @@ function Results() {
 
             </div>
 
+
             <div className="tags">
 
               {userData.interests.map((interest) => (
 
                 <span key={interest}>
-                  <span className="tag-check">✓</span>
+                  <span className="tag-check">
+                    ✓
+                  </span>
+
                   {interest}
                 </span>
 
@@ -387,41 +394,6 @@ function Results() {
           </section>
 
         )}
-
-
-        {/* NEXT STEP */}
-        <section className="results-next">
-
-          <div className="next-content">
-
-            <div className="next-icon">
-              🚀
-            </div>
-
-            <div>
-              <span>READY FOR THE NEXT STEP?</span>
-
-              <h2>
-                Build your career roadmap
-              </h2>
-
-              <p>
-                Discover the skills, courses and steps you can take
-                to move towards your ideal career.
-              </p>
-            </div>
-
-          </div>
-
-          <Link
-            to="/assessment"
-            className="roadmap-button"
-          >
-            Explore Your Roadmap
-            <span>→</span>
-          </Link>
-
-        </section>
 
       </main>
 

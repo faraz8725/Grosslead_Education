@@ -1,0 +1,437 @@
+/* ========================================
+   JOB CHOICE PAGE
+======================================== */
+
+.job-choice-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #f8fafc;
+  color: #172033;
+  overflow-x: hidden;
+}
+
+
+/* ========================================
+   HERO
+======================================== */
+
+.job-choice-hero {
+  padding: 80px 7% 70px;
+  background:
+    radial-gradient(
+      circle at 85% 20%,
+      rgba(37, 150, 243, 0.12),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #f4f8fc
+    );
+  border-bottom: 1px solid #e8edf3;
+}
+
+.job-choice-hero-content {
+  max-width: 850px;
+  margin: auto;
+  text-align: center;
+}
+
+.job-choice-badge {
+  display: inline-block;
+  padding: 8px 15px;
+  border-radius: 30px;
+  background: #eaf5ff;
+  color: #1683d8;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  margin-bottom: 20px;
+}
+
+.job-choice-hero h1 {
+  margin: 0;
+  font-size: clamp(38px, 5vw, 60px);
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: -2px;
+}
+
+.job-choice-hero h1 span {
+  color: #1591dc;
+}
+
+.job-choice-hero p {
+  max-width: 680px;
+  margin: 22px auto 0;
+  color: #64748b;
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+
+/* ========================================
+   CHOICE SECTION
+======================================== */
+
+.job-choice-section {
+  width: min(1100px, 90%);
+  margin: auto;
+  padding: 75px 0 85px;
+}
+
+.job-choice-heading {
+  max-width: 700px;
+  margin: 0 auto 45px;
+  text-align: center;
+}
+
+.job-choice-heading > span {
+  color: #1591dc;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.job-choice-heading h2 {
+  margin: 10px 0 12px;
+  font-size: 35px;
+  letter-spacing: -1px;
+}
+
+.job-choice-heading p {
+  margin: 0;
+  color: #718096;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+
+/* ========================================
+   CARDS
+======================================== */
+
+.job-choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.job-choice-card {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid #e4eaf0;
+  border-radius: 22px;
+  padding: 38px;
+  cursor: pointer;
+  outline: none;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.job-choice-card:hover,
+.job-choice-card:focus-visible {
+  transform: translateY(-7px);
+  box-shadow: 0 20px 50px rgba(30, 70, 100, 0.12);
+}
+
+
+/* ========================================
+   PRIVATE
+======================================== */
+
+.private-card:hover,
+.private-card:focus-visible {
+  border-color: #9ed5f5;
+}
+
+.private-card .job-choice-icon {
+  background: #eaf6ff;
+  color: #1683d8;
+}
+
+.private-card .job-choice-label {
+  color: #1683d8;
+}
+
+
+/* ========================================
+   GOVERNMENT
+======================================== */
+
+.government-card:hover,
+.government-card:focus-visible {
+  border-color: #b8d9c5;
+}
+
+.government-card .job-choice-icon {
+  background: #eef8f1;
+  color: #318957;
+}
+
+.government-card .job-choice-label {
+  color: #318957;
+}
+
+
+/* ========================================
+   ICON
+======================================== */
+
+.job-choice-icon {
+  width: 68px;
+  height: 68px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 18px;
+  font-size: 32px;
+  margin-bottom: 25px;
+}
+
+
+/* ========================================
+   CARD CONTENT
+======================================== */
+
+.job-choice-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  margin-bottom: 9px;
+}
+
+.job-choice-card h3 {
+  margin: 0 0 13px;
+  font-size: 29px;
+  letter-spacing: -0.5px;
+}
+
+.job-choice-card p {
+  max-width: 470px;
+  margin: 0;
+  color: #64748b;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+
+/* ========================================
+   CARD BUTTON
+======================================== */
+
+.job-choice-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 30px;
+  padding-top: 20px;
+
+  border-top: 1px solid #edf1f5;
+
+  color: #172033;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.job-choice-button span {
+  font-size: 20px;
+  transition: transform 0.2s ease;
+}
+
+.job-choice-card:hover .job-choice-button span,
+.job-choice-card:focus-visible .job-choice-button span {
+  transform: translateX(5px);
+}
+
+
+/* ========================================
+   CTA
+======================================== */
+
+.job-choice-cta {
+  width: min(1050px, 88%);
+  margin: 0 auto 70px;
+
+  padding: 42px 48px;
+  box-sizing: border-box;
+
+  border-radius: 22px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0f8ed7,
+      #176bb1
+    );
+
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 30px;
+
+  box-shadow:
+    0 20px 45px rgba(20, 120, 190, 0.20);
+}
+
+.job-choice-cta span {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  opacity: 0.85;
+}
+
+.job-choice-cta h2 {
+  margin: 8px 0;
+  font-size: 30px;
+}
+
+.job-choice-cta p {
+  max-width: 550px;
+  margin: 0;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.job-choice-cta button {
+  flex-shrink: 0;
+
+  padding: 14px 22px;
+
+  border: none;
+  border-radius: 9px;
+
+  background: white;
+  color: #147dbb;
+
+  font-weight: 700;
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.job-choice-cta button:hover {
+  transform: translateY(-2px);
+}
+
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 800px) {
+
+  .job-choice-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .job-choice-card {
+    padding: 32px;
+  }
+
+  .job-choice-cta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .job-choice-cta button {
+    width: 100%;
+  }
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+  .job-choice-hero {
+    padding: 55px 6% 50px;
+  }
+
+  .job-choice-hero h1 {
+    font-size: 38px;
+    letter-spacing: -1px;
+  }
+
+  .job-choice-hero p {
+    font-size: 15px;
+  }
+
+  .job-choice-section {
+    width: 88%;
+    padding: 55px 0 65px;
+  }
+
+  .job-choice-heading {
+    margin-bottom: 32px;
+  }
+
+  .job-choice-heading h2 {
+    font-size: 28px;
+  }
+
+  .job-choice-heading p {
+    font-size: 14px;
+  }
+
+  .job-choice-card {
+    padding: 27px;
+    border-radius: 18px;
+  }
+
+  .job-choice-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 28px;
+  }
+
+  .job-choice-card h3 {
+    font-size: 25px;
+  }
+
+  .job-choice-card p {
+    font-size: 14px;
+  }
+
+  .job-choice-cta {
+    width: 88%;
+    margin-bottom: 45px;
+    padding: 30px 24px;
+  }
+
+  .job-choice-cta h2 {
+    font-size: 25px;
+  }
+}
+
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 400px) {
+
+  .job-choice-hero h1 {
+    font-size: 33px;
+  }
+
+  .job-choice-card h3 {
+    font-size: 23px;
+  }
+
+  .job-choice-card {
+    padding: 23px;
+  }
+}

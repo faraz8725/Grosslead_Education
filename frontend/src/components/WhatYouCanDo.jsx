@@ -9,7 +9,7 @@ const features = [
   },
   {
     icon: "🗺️",
-    title: "Career Roadmap",
+    title: "Education Loan",
     text: "See practical steps from today to your goals.",
   },
   {

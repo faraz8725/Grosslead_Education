@@ -17,7 +17,7 @@
   position: relative;
 
   background:
-    radial-gradient(circle at 12% 50%, rgba(35, 131, 226, 0.10), transparent 25%),
+    radial-gradient(circle at 12% 50%, rgba(21, 127, 233, 0.1), transparent 25%),
     radial-gradient(circle at 88% 20%, rgba(91, 92, 230, 0.08), transparent 25%),
     linear-gradient(90deg, #f1f6ff 0%, #f8f8ff 50%, #f1f6ff 100%);
 

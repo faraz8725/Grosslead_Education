@@ -1,5 +1,9 @@
+
 import { useState } from "react";
 import "../styles/assessment.css";
+
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 function Assessment() {
   const [step, setStep] = useState(1);
@@ -73,6 +77,8 @@ function Assessment() {
       budget: "",
       careerGoal: "",
     }));
+
+    setError("");
   };
 
   // ================================
@@ -85,9 +91,9 @@ function Assessment() {
     // Step 1 validation
     if (step === 1) {
       if (
-        !formData.name ||
+        !formData.name.trim() ||
         !formData.age ||
-        !formData.location
+        !formData.location.trim()
       ) {
         setError("Please fill all basic details.");
         return;
@@ -99,7 +105,7 @@ function Assessment() {
       if (
         !formData.qualification ||
         !formData.stream ||
-        !formData.marks ||
+        !formData.marks.trim() ||
         !formData.passingYear
       ) {
         setError("Please complete your education details.");
@@ -233,9 +239,7 @@ function Assessment() {
                       ? "selected"
                       : ""
                   }
-                  onClick={() =>
-                    handleInterest(interest)
-                  }
+                  onClick={() => handleInterest(interest)}
                 >
                   {interest}
                 </button>
@@ -345,9 +349,7 @@ function Assessment() {
                       ? "selected"
                       : ""
                   }
-                  onClick={() =>
-                    handleInterest(interest)
-                  }
+                  onClick={() => handleInterest(interest)}
                 >
                   {interest}
                 </button>
@@ -435,9 +437,7 @@ function Assessment() {
                       ? "selected"
                       : ""
                   }
-                  onClick={() =>
-                    handleInterest(skill)
-                  }
+                  onClick={() => handleInterest(skill)}
                 >
                   {skill}
                 </button>
@@ -543,9 +543,7 @@ function Assessment() {
                       ? "selected"
                       : ""
                   }
-                  onClick={() =>
-                    handleInterest(interest)
-                  }
+                  onClick={() => handleInterest(interest)}
                 >
                   {interest}
                 </button>
@@ -587,10 +585,7 @@ function Assessment() {
             <label>Do you have business experience?</label>
 
             <div className="options">
-              {[
-                "Yes",
-                "No",
-              ].map((answer) => (
+              {["Yes", "No"].map((answer) => (
                 <button
                   type="button"
                   key={answer}
@@ -651,9 +646,7 @@ function Assessment() {
                       ? "selected"
                       : ""
                   }
-                  onClick={() =>
-                    handleInterest(interest)
-                  }
+                  onClick={() => handleInterest(interest)}
                 >
                   {interest}
                 </button>
@@ -678,24 +671,24 @@ function Assessment() {
     return null;
   };
 
+  // ================================
+  // MAIN RETURN
+  // ================================
+
   return (
     <div className="assessment-page">
 
-      {/* HEADER */}
+      {/* ================================
+          NAVBAR
+      ================================= */}
 
-      <div className="assessment-header">
+      <Navbar />
 
-        <a href="/" className="assessment-logo">
-          🎓 Educational
-        </a>
+      {/* ================================
+          ASSESSMENT MAIN CONTENT
+      ================================= */}
 
-        <span>Career Assessment</span>
-
-      </div>
-
-      {/* MAIN */}
-
-      <div className="assessment-container">
+      <main className="assessment-container">
 
         {/* INTRO */}
 
@@ -855,7 +848,6 @@ function Assessment() {
 
               </div>
 
-
               <div className="form-row">
 
                 <div className="form-group">
@@ -892,7 +884,6 @@ function Assessment() {
 
                 </div>
 
-
                 <div className="form-group">
 
                   <label>Marks / CGPA</label>
@@ -908,7 +899,6 @@ function Assessment() {
                 </div>
 
               </div>
-
 
               <div className="form-group">
 
@@ -951,7 +941,6 @@ function Assessment() {
             </div>
           )}
 
-
           {/* ================================
               STEP 3
           ================================= */}
@@ -968,7 +957,6 @@ function Assessment() {
                 current goal.
               </p>
 
-
               <div className="form-group">
 
                 <div className="options">
@@ -978,7 +966,7 @@ function Assessment() {
                     "Get a Job",
                     "Learn Skills",
                     "Start a Business",
-                    "Not Sure Yet"
+                    "Not Sure Yet",
                   ].map((goal) => (
 
                     <button
@@ -989,9 +977,7 @@ function Assessment() {
                           ? "selected"
                           : ""
                       }
-                      onClick={() =>
-                        handleGoal(goal)
-                      }
+                      onClick={() => handleGoal(goal)}
                     >
                       {goal}
                     </button>
@@ -1005,32 +991,21 @@ function Assessment() {
             </div>
           )}
 
-
           {/* ================================
               STEP 4
           ================================= */}
 
           {step === 4 && renderStepFour()}
 
-
           {/* ================================
               ERROR MESSAGE
           ================================= */}
 
           {error && (
-
-            <p
-              style={{
-                color: "red",
-                marginTop: "15px",
-                fontSize: "14px"
-              }}
-            >
+            <p className="assessment-error">
               {error}
             </p>
-
           )}
-
 
           {/* ================================
               BUTTONS
@@ -1039,7 +1014,6 @@ function Assessment() {
           <div className="form-buttons">
 
             {step > 1 && (
-
               <button
                 className="back-button"
                 onClick={previousStep}
@@ -1047,12 +1021,9 @@ function Assessment() {
               >
                 ← Back
               </button>
-
             )}
 
-
             {step < 4 ? (
-
               <button
                 className="continue-button"
                 onClick={nextStep}
@@ -1060,9 +1031,7 @@ function Assessment() {
               >
                 Continue →
               </button>
-
             ) : (
-
               <button
                 className="continue-button"
                 onClick={handleSubmit}
@@ -1072,23 +1041,28 @@ function Assessment() {
                   ? "Analyzing..."
                   : "Analyze My Profile →"}
               </button>
-
             )}
 
           </div>
 
         </div>
 
-
         {/* ================================
             PRIVACY
         ================================= */}
 
         <p className="privacy-note">
-          🔒 Your information is used only to personalize your recommendations.
+          🔒 Your information is used only to personalize
+          your recommendations.
         </p>
 
-      </div>
+      </main>
+
+      {/* ================================
+          FOOTER
+      ================================= */}
+
+      <Footer />
 
     </div>
   );

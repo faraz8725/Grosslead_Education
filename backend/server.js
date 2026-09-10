@@ -8,6 +8,8 @@ const { connectDB } = require("./config/db");
 const assessmentRoutes = require("./routes/assessmentRoutes");
 const authRoutes = require("./routes/authRoutes");
 const adminRoutes = require("./routes/adminRoutes");
+const careerRoutes = require("./routes/careerRoutes");
+const loanRoutes = require("./routes/loanRoutes");
 
 const app = express();
 
@@ -81,6 +83,8 @@ app.use(
   assessmentRoutes
 );
 
+app.use("/api/admin/careers", careerRoutes);
+
 // Common Login
 app.use(
   "/api/auth",
@@ -92,6 +96,8 @@ app.use(
   "/api/admin",
   adminRoutes
 );
+
+app.use("/api/loan", loanRoutes);
 
 // ========================================
 // START SERVER

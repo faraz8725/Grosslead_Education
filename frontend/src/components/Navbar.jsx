@@ -2,12 +2,15 @@ import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import "../styles/navbar.css";
 
+import logo from "../assets/web-logo.png";
+
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const location = useLocation();
 
-  // Check logged-in user
+  // ================= USER =================
+
   const [user, setUser] = useState(() => {
     const savedUser = localStorage.getItem("user");
 
@@ -22,7 +25,8 @@ function Navbar() {
     return null;
   });
 
-  // Logout
+  // ================= LOGOUT =================
+
   const handleLogout = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("role");
@@ -35,6 +39,23 @@ function Navbar() {
     window.location.href = "/";
   };
 
+  // ================= ACTIVE LINK =================
+
+  const isActive = (path) => {
+    if (path === "/") {
+      return location.pathname === "/";
+    }
+
+    if (path === "/careers") {
+      return (
+        location.pathname === "/careers" ||
+        location.pathname.startsWith("/career/")
+      );
+    }
+
+    return location.pathname === path;
+  };
+
   return (
     <header className="navbar">
       <div className="navbar-inner">
@@ -42,20 +63,11 @@ function Navbar() {
         {/* ================= LOGO ================= */}
 
         <a href="/" className="navbar-logo">
-          <div className="logo-icon-bg">
-            <svg
-              className="logo-icon"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-              <path d="M6 12v5c3 3 9 3 12 0v-5" />
-            </svg>
-          </div>
+          <img
+            src={logo}
+            alt="Educational"
+            className="logo-image"
+          />
 
           <span className="logo-text">
             Educational
@@ -63,16 +75,14 @@ function Navbar() {
         </a>
 
 
-        {/* ================= DESKTOP NAVIGATION ================= */}
+        {/* ================= DESKTOP NAV ================= */}
 
         <nav className="nav-links">
-
-          {/* HOME */}
 
           <a
             href="/"
             className={`nav-link ${
-              location.pathname === "/" ? "active" : ""
+              isActive("/") ? "active" : ""
             }`}
           >
             <svg
@@ -90,15 +100,10 @@ function Navbar() {
           </a>
 
 
-          {/* CAREERS */}
-
           <a
             href="/careers"
             className={`nav-link ${
-              location.pathname === "/careers" ||
-              location.pathname.startsWith("/career/")
-                ? "active"
-                : ""
+              isActive("/careers") ? "active" : ""
             }`}
           >
             <svg
@@ -116,12 +121,10 @@ function Navbar() {
           </a>
 
 
-          {/* JOBS */}
-
           <a
             href="/jobs"
             className={`nav-link ${
-              location.pathname === "/jobs" ? "active" : ""
+              isActive("/jobs") ? "active" : ""
             }`}
           >
             <svg
@@ -147,12 +150,10 @@ function Navbar() {
           </a>
 
 
-          {/* ABOUT */}
-
           <a
-            href="/about"
+            href="/education-loan"
             className={`nav-link ${
-              location.pathname === "/about" ? "active" : ""
+              isActive("/education-loan") ? "active" : ""
             }`}
           >
             <svg
@@ -162,11 +163,29 @@ function Navbar() {
               stroke="currentColor"
               strokeWidth="2"
             >
-              <circle
-                cx="12"
-                cy="12"
-                r="10"
-              />
+              <path d="M12 3L3 8l9 5 9-5-9-5z" />
+              <path d="M7 11v5c0 2 2.2 4 5 4s5-2 5-4v-5" />
+              <path d="M21 8v6" />
+            </svg>
+
+            Education Loan
+          </a>
+
+
+          <a
+            href="/about"
+            className={`nav-link ${
+              isActive("/about") ? "active" : ""
+            }`}
+          >
+            <svg
+              className="nav-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <circle cx="12" cy="12" r="10" />
 
               <line
                 x1="12"
@@ -189,7 +208,7 @@ function Navbar() {
         </nav>
 
 
-        {/* ================= DESKTOP RIGHT ================= */}
+        {/* ================= RIGHT SIDE ================= */}
 
         <div className="nav-right">
 
@@ -227,7 +246,7 @@ function Navbar() {
         </div>
 
 
-        {/* ================= MOBILE HAMBURGER ================= */}
+        {/* ================= HAMBURGER ================= */}
 
         <button
           className={`mobile-menu-btn ${
@@ -235,6 +254,7 @@ function Navbar() {
           }`}
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
+          aria-expanded={menuOpen}
         >
           <span></span>
           <span></span>
@@ -252,62 +272,56 @@ function Navbar() {
         }`}
       >
 
-        {/* HOME */}
-
         <a
           href="/"
           className={`mobile-link ${
-            location.pathname === "/" ? "active" : ""
+            isActive("/") ? "active" : ""
           }`}
           onClick={() => setMenuOpen(false)}
         >
           Home
         </a>
 
-
-        {/* CAREERS */}
-
         <a
           href="/careers"
           className={`mobile-link ${
-            location.pathname === "/careers" ||
-            location.pathname.startsWith("/career/")
-              ? "active"
-              : ""
+            isActive("/careers") ? "active" : ""
           }`}
           onClick={() => setMenuOpen(false)}
         >
           Careers
         </a>
 
-
-        {/* JOBS */}
-
         <a
           href="/jobs"
           className={`mobile-link ${
-            location.pathname === "/jobs" ? "active" : ""
+            isActive("/jobs") ? "active" : ""
           }`}
           onClick={() => setMenuOpen(false)}
         >
           Jobs
         </a>
 
-
-        {/* ABOUT */}
+        <a
+          href="/education-loan"
+          className={`mobile-link ${
+            isActive("/education-loan") ? "active" : ""
+          }`}
+          onClick={() => setMenuOpen(false)}
+        >
+          Education Loan
+        </a>
 
         <a
           href="/about"
           className={`mobile-link ${
-            location.pathname === "/about" ? "active" : ""
+            isActive("/about") ? "active" : ""
           }`}
           onClick={() => setMenuOpen(false)}
         >
           About
         </a>
 
-
-        {/* MOBILE ACTIONS */}
 
         <div className="mobile-actions">
 
@@ -329,6 +343,7 @@ function Navbar() {
               <a
                 href="/login"
                 className="mobile-sign-in"
+                onClick={() => setMenuOpen(false)}
               >
                 Sign In
               </a>
@@ -336,6 +351,7 @@ function Navbar() {
               <a
                 href="/register"
                 className="mobile-get-started"
+                onClick={() => setMenuOpen(false)}
               >
                 Create Account
               </a>

@@ -5,8 +5,7 @@ const OpenAI = require("openai");
 const router = express.Router();
 
 const client = new OpenAI({
-  apiKey: process.env.OPENROUTER_API_KEY,
-  baseURL: "https://openrouter.ai/api/v1",
+  apiKey: process.env.OPENAI_API_KEY,
 });
 
 router.post("/", async (req, res) => {
@@ -54,18 +53,13 @@ Do not include markdown.
 Do not include any text outside the JSON.
 `;
 
-    const completion = await client.chat.completions.create({
-      model: "openrouter/free",
-      messages: [
-        {
-          role: "user",
-          content: prompt,
-        },
-      ],
-      temperature: 0.4,
+    const response = await client.responses.create({
+      model: "gpt-5.6-luna",
+      input: prompt,
+      // temperature: 0.4,
     });
 
-    const aiResponse = completion.choices[0].message.content;
+    const aiResponse = response.output_text;
 
     console.log("AI Response:", aiResponse);
 

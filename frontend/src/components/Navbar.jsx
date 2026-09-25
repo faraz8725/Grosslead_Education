@@ -70,7 +70,7 @@ function Navbar() {
           />
 
           <span className="logo-text">
-            Educational
+            Genz Grow
           </span>
         </a>
 

@@ -21,7 +21,7 @@ function Footer() {
               className="edu-footer-logo-image"
             />
 
-            <span>Educational</span>
+            <span>Genz Grow</span>
 
           </a>
 
@@ -60,7 +60,7 @@ function Footer() {
             className="edu-footer-email"
           >
             <span className="email-icon">✉</span>
-            <span>contact@educational.com</span>
+            <span>Business.grosslead@gmail.com</span>
           </a>
 
           <div className="contact-divider"></div>

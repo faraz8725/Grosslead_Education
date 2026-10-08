@@ -1856,7 +1856,7 @@ function AdminDashboard() {
       setError("");
 
       const response = await fetch(
-        `${API_URL}/stats`
+        `${API_URL}/api/admin/stats`
       );
 
       const data =

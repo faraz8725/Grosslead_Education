@@ -3,6 +3,8 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "../styles/contactUs.css";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 function ContactUs() {
   const [formData, setFormData] = useState({
     name: "",
@@ -34,7 +36,7 @@ function ContactUs() {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/loan/enquiry",
+        `${API_URL}/api/loan/enquiries`,
         {
           method: "POST",
           headers: {
@@ -49,7 +51,7 @@ function ContactUs() {
       if (!response.ok || !data.success) {
         throw new Error(
           data.message ||
-            "Enquiry could not be submitted"
+          "Enquiry could not be submitted"
         );
       }
 
@@ -70,7 +72,7 @@ function ContactUs() {
 
       setError(
         err.message ||
-          "Server se connection nahi ho pa raha."
+        "Server se connection nahi ho pa raha."
       );
     } finally {
       setLoading(false);

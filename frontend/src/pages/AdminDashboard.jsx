@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import "./../styles/adminDashboard.css";
 
-const API_URL = "http://localhost:5000/api/admin";
+// const API_URL = "http://localhost:5000/api/admin";
+const API_URL = import.meta.env.VITE_API_URL;
 
 
 

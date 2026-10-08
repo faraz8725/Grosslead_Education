@@ -21,8 +21,11 @@ function LoanStudentsManager({ goBack }) {
       setLoading(true);
       setError("");
 
+      // const response = await fetch(
+      //   "http://localhost:5000/api/loan/enquiries"
+      // );
       const response = await fetch(
-        "http://localhost:5000/api/loan/enquiries"
+        `${API_URL}/api/loan/enquiries`
       );
 
       const data = await response.json();
@@ -67,7 +70,7 @@ function LoanStudentsManager({ goBack }) {
     try {
 
       const response = await fetch(
-        `http://localhost:5000/api/loan/enquiries/${id}`,
+        `${API_URL}/api/loan/enquiries/${id}`,
         {
           method: "DELETE",
         }
@@ -1120,7 +1123,7 @@ function JobManager({ type, goBack }) {
       if (!data.success) {
         throw new Error(
           data.message ||
-            "Job could not be saved"
+          "Job could not be saved"
         );
       }
 
@@ -1142,7 +1145,7 @@ function JobManager({ type, goBack }) {
 
       setError(
         err.message ||
-          "Job could not be saved."
+        "Job could not be saved."
       );
     } finally {
       setSaving(false);
@@ -1236,7 +1239,7 @@ function JobManager({ type, goBack }) {
       if (!data.success) {
         throw new Error(
           data.message ||
-            "Job could not be deleted"
+          "Job could not be deleted"
         );
       }
 
@@ -1254,7 +1257,7 @@ function JobManager({ type, goBack }) {
 
       setError(
         err.message ||
-          "Job could not be deleted."
+        "Job could not be deleted."
       );
     }
   };
@@ -1330,11 +1333,10 @@ function JobManager({ type, goBack }) {
         <h2>
           {editingId
             ? "Edit Job"
-            : `Add ${
-                isGovernment
-                  ? "Government"
-                  : "Private"
-              } Job`}
+            : `Add ${isGovernment
+              ? "Government"
+              : "Private"
+            } Job`}
         </h2>
 
         <p>
@@ -1968,7 +1970,7 @@ function AdminDashboard() {
           </button>
 
 
-          
+
           <button
             className={
               activePage === "loanStudents"

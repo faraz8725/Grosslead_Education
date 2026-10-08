@@ -46,7 +46,17 @@ function ContactUs() {
         }
       );
 
-      const data = await response.json();
+      const responseText = await response.text();
+
+      let data;
+
+      try {
+        data = JSON.parse(responseText);
+      } catch {
+        throw new Error(
+          `Server returned ${response.status}. Loan API route check karo.`
+        );
+      }
 
       if (!response.ok || !data.success) {
         throw new Error(

@@ -36,7 +36,7 @@ function ContactUs() {
 
     try {
       const response = await fetch(
-        `${API_URL}/api/loan/enquiries`,
+        `${API_URL}/api/loan/enquiry`,
         {
           method: "POST",
           headers: {

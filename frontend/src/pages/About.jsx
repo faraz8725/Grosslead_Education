@@ -8,9 +8,6 @@ function About() {
 
       <Navbar />
 
-
-      
-
       {/* HERO */}
       <section className="about-hero">
         <div className="about-container">
